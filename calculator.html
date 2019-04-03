@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function gotResponse(parsedRes) {
+            console.log(parsedRes)
+        }
+        function main(){
+            document.getElementById('btn').addEventListener('click', function(){
+                fetch('http://localhost:8080/add', {
+                    method : 'POST',
+                })
+                .then((res) => {
+                        res.json().then(gotResponse)}
+                )
+                .catch();
+            });
+        }
+        window.onload = main;
+    </script>
+    <form action="http://localhost:8080/add" method="POST">
+        <input type="text" name="massage">
+        <input type="submit" value="SEND">
+    </form>
+    <div>
+        <input type="text" name="msg" id="msg">
+        <button id='btn'>버튼</button>
+    </div>
+</body>
+</html>
